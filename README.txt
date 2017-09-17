@@ -1,0 +1,1 @@
+A little addon to read data from weather sensors (currently only SenseHAT for RPi) and add that information to the Kodi weather window properties.
