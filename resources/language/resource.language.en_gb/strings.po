@@ -30,6 +30,18 @@ msgctxt "#32202"
 msgid "Sensor read interval (in minutes)"
 msgstr ""
 
+msgctxt "#32203"
+msgid "Rapid pressure change (in millibars)"
+msgstr ""
+
+msgctxt "#32204"
+msgid "Regular pressure change (in millibars)"
+msgstr ""
+
+msgctxt "#32205"
+msgid "Time window for pressure comparison (in minutes)"
+msgstr ""
+
 msgctxt "#32300"
 msgid "Sensor Info"
 msgstr ""
@@ -44,4 +56,8 @@ msgstr ""
 
 msgctxt "#32303"
 msgid "  Sensor file location"
+msgstr ""
+
+msgctxt "#32304"
+msgid "  Adjust SenseHAT based on RPi CPU temp"
 msgstr ""

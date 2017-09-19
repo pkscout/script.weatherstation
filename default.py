@@ -58,7 +58,7 @@ for module in resources.plugins.__all__:
     __import__( full_plugin )
     imp_plugin = sys.modules[ full_plugin ]
     lw.log( ['loaded plugin ' + module] )
-    plugin = imp_plugin.objectConfig()
+    plugin = imp_plugin.objectConfig( addon=addon )
     active, priority = _get_plugin_settings( module )
     if active == 'true':
         plugins['objs'][module] = plugin
@@ -86,8 +86,7 @@ class Main:
             lw.log( ['checking %s for sensor data' % plugin_name[1]] )
             s_foldername = addon.getSetting( 'folder_' + plugin_name[1] )
             t_scale = xbmc.getInfoLabel('System.TemperatureUnits')
-            sensordata, loglines = plugins['objs'][plugin_name[1]].getSensorData( sensorfolder=s_foldername, tempscale=t_scale )
-            lw.log( loglines )
+            sensordata = plugins['objs'][plugin_name[1]].getSensorData( sensorfolder=s_foldername, tempscale=t_scale )
             if sensordata:
                 lw.log( ['got sensor data from %s, so stop looking' % plugin_name[1]] )
                 break

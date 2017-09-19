@@ -3,14 +3,20 @@
 
 import os, time
 from datetime import datetime
+import _strptime # have to do to use strptime due to python bug
 from ..common.fileops import readFile, checkPath
+from ..common.xlogger import Logger
 
 
 class objectConfig():
-    def __init__( self ):
-        self.P_RAPID = 10
-        self.P_REGULAR = 3
-        self.P_DELTATIME = 180
+    def __init__( self, addon ):
+        preamble     = '[Weather Station-SenseHAT]'
+        logdebug     = addon.getSetting( "logging" )
+        self.LW = Logger( preamble=preamble, logdebug=logdebug )
+        self.P_RAPID = int( addon.getSetting( "rapid_pressure" ) )
+        self.P_REGULAR = int( addon.getSetting( "regular_pressure" ) )
+        self.P_DELTATIME = int( addon.getSetting( "p_deltatime" ) )
+        self.ADJUSTTEMP = addon.getSetting( "adjust_senseHAT" )
         self.LOGDATEFORMAT = "%Y-%m-%d %H:%M:%S,%f"
 
         
@@ -18,7 +24,7 @@ class objectConfig():
         loglines = []
         sensordata = []
         f_loglines, alldata = readFile( os.path.join( sensorfolder, 'sensordata.log' ) )
-        loglines.extend( f_loglines )
+        self.LW.log( f_loglines )
         data_array = alldata.splitlines()
         try:
             last = data_array[-1]
@@ -37,10 +43,10 @@ class objectConfig():
                     sensordata.append( [s_info[0], self._convert_pressure( s_info[1], tempscale )] )
                 else:
                     sensordata.append( [s_info[0], s_info[1]] )
-            pressure_trend, p_loglines = self._get_pressure_trend( data_array )
-            loglines.extend( p_loglines )
-            sensordata.append( ['PressureTrend', pressure_trend] )
-        return sensordata, loglines	
+            sensordata.append( ['PressureTrend', self._get_pressure_trend( data_array )] )
+            self.LW.log( ['returning sensor data'] )
+            self.LW.log( sensordata )
+        return sensordata
 
         
     def _convert_pressure( self, pressure, tempscale ):
@@ -102,10 +108,9 @@ class objectConfig():
 
 
     def _get_pressure_trend( self, data_array ):
-        loglines = []
         current, previous = self._get_pressure_compare_lines( data_array )
-        loglines.append( 'current is ' + current )
-        loglines.append( 'previous is ' + previous )
+        self.LW.log( ['current is ' + current] )
+        self.LW.log( ['previous is ' + previous] )
         try:
             current_pressure = int( current.split('\t')[3].split(':')[1] )
             previous_pressure = int( previous.split('\t')[3].split(':')[1] )
@@ -118,7 +123,7 @@ class objectConfig():
         else:
             direction = 'rising'
         if abs( diff ) >= self.P_RAPID:
-            return 'rapidly ' + direction, loglines
+            return 'rapidly ' + direction
         elif abs( diff ) >= self.P_REGULAR:
-            return direction, loglines
-        return 'steady', loglines
+            return direction
+        return 'steady'
