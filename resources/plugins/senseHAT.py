@@ -1,18 +1,23 @@
 #v.0.1.0
 # -*- coding: utf-8 -*-
 
-import os
-from ..common.fileops import readFile
+import os, time
+from datetime import datetime
+from ..common.fileops import readFile, checkPath
 
 
 class objectConfig():
     def __init__( self ):
-        pass
+        self.P_RAPID = 10
+        self.P_REGULAR = 3
+        self.P_DELTATIME = 180
+        self.LOGDATEFORMAT = "%Y-%m-%d %H:%M:%S,%f"
+
         
     def getSensorData( self, sensorfolder='', tempscale='°C' ):
         loglines = []
         sensordata = []
-        f_loglines, alldata = readFile( os.path.join( sensorfolder, 'sensordata.txt' ) )
+        f_loglines, alldata = readFile( os.path.join( sensorfolder, 'sensordata.log' ) )
         loglines.extend( f_loglines )
         data_array = alldata.splitlines()
         try:
@@ -29,11 +34,22 @@ class objectConfig():
                 elif s_info[0].endswith('Humidity'):
                     sensordata.append( [s_info[0], s_info[1] + '%'] )
                 elif s_info[0].endswith('Pressure'):
-                    sensordata.append( [s_info[0], s_info[1] + 'mbar'] )
+                    sensordata.append( [s_info[0], self._convert_pressure( s_info[1], tempscale )] )
                 else:
                     sensordata.append( [s_info[0], s_info[1]] )
+            pressure_trend, p_loglines = self._get_pressure_trend( data_array )
+            loglines.extend( p_loglines )
+            sensordata.append( ['PressureTrend', pressure_trend] )
         return sensordata, loglines	
+
         
+    def _convert_pressure( self, pressure, tempscale ):
+        if tempscale == '°F':
+            return '%.2f' % (float( pressure ) * 0.0295301) + ' inHg'
+        else:
+            return pressure + ' mbar'
+    
+    
     def _convert_temp( self, temperature, tempscale ):
         if tempscale == '°C':
             return temperature
@@ -53,3 +69,56 @@ class objectConfig():
             return str( int( (float( temperature ) * 0.33) ) )
         else:
             return temperature
+
+
+    def _get_pressure_compare_lines( self, data_array ):
+        try:
+            last = data_array[-1]
+            n_last = data_array[-2]
+        except IndexError:
+            last = ''
+            n_last = ''
+        if not (last and n_last):
+            return '', ''
+        last_values = last.split('\t')
+        n_last_values = n_last.split('\t')
+        # doing the date conversions this way due to bug in the version of python in Kodi
+        # the shorter method worked fine in an external script
+        try:
+            last_time = datetime.strptime(last_values[0].rstrip(), self.LOGDATEFORMAT)
+        except TypeError:
+            last_time = datetime(*(time.strptime(last_values[0].rstrip(), self.LOGDATEFORMAT)[0:6]))
+        try:
+            n_last_time = datetime.strptime(n_last_values[0].rstrip(), self.LOGDATEFORMAT)
+        except TypeError:
+            n_last_time = datetime(*(time.strptime(n_last_values[0].rstrip(), self.LOGDATEFORMAT)[0:6]))
+        tdelta = last_time - n_last_time
+        target_seconds = self.P_DELTATIME * 60
+        try:
+            target = data_array[-int( target_seconds/tdelta.total_seconds() )]
+        except IndexError:
+            target = data_array[0]
+        return last, target        
+
+
+    def _get_pressure_trend( self, data_array ):
+        loglines = []
+        current, previous = self._get_pressure_compare_lines( data_array )
+        loglines.append( 'current is ' + current )
+        loglines.append( 'previous is ' + previous )
+        try:
+            current_pressure = int( current.split('\t')[3].split(':')[1] )
+            previous_pressure = int( previous.split('\t')[3].split(':')[1] )
+        except IndexError:
+            current_pressure = 0
+            previous_pressure = 0
+        diff = current_pressure - previous_pressure
+        if diff < 0:
+            direction = 'falling'
+        else:
+            direction = 'rising'
+        if abs( diff ) >= self.P_RAPID:
+            return 'rapidly ' + direction, loglines
+        elif abs( diff ) >= self.P_REGULAR:
+            return direction, loglines
+        return 'steady', loglines

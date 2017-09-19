@@ -1,2 +1,5 @@
+v.0.0.2
+- added pressure trend calculation to SenseHAT plugin
+
 v.0.0.1
 -initial upload

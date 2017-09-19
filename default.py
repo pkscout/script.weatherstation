@@ -90,7 +90,6 @@ class Main:
             lw.log( loglines )
             if sensordata:
                 lw.log( ['got sensor data from %s, so stop looking' % plugin_name[1]] )
-                lw.log( sensordata )
                 break
         if sensordata:
             return sensordata
