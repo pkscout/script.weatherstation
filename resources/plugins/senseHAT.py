@@ -1,7 +1,7 @@
 #v.0.1.0
 # -*- coding: utf-8 -*-
 
-import os, time
+import os, time, xbmc
 from datetime import datetime
 import _strptime # have to do to use strptime due to python bug
 from ..common.fileops import readFile, checkPath
@@ -10,20 +10,20 @@ from ..common.xlogger import Logger
 
 class objectConfig():
     def __init__( self, addon ):
-        preamble     = '[Weather Station-SenseHAT]'
-        logdebug     = addon.getSetting( "logging" )
-        self.LW = Logger( preamble=preamble, logdebug=logdebug )
+        self.LW = Logger( preamble='[Weather Station-SenseHAT]', logdebug=addon.getSetting( "logging" ) )
+        self.SENSORFOLDER = addon.getSetting( "folder_senseHAT" )
         self.P_RAPID = int( addon.getSetting( "rapid_pressure" ) )
         self.P_REGULAR = int( addon.getSetting( "regular_pressure" ) )
         self.P_DELTATIME = int( addon.getSetting( "p_deltatime" ) )
         self.ADJUSTTEMP = addon.getSetting( "adjust_senseHAT" )
+        self.TEMPSCALE = xbmc.getInfoLabel('System.TemperatureUnits')
         self.LOGDATEFORMAT = "%Y-%m-%d %H:%M:%S,%f"
 
         
-    def getSensorData( self, sensorfolder='', tempscale='°C' ):
+    def getSensorData( self ):
         loglines = []
         sensordata = []
-        f_loglines, alldata = readFile( os.path.join( sensorfolder, 'sensordata.log' ) )
+        f_loglines, alldata = readFile( os.path.join( self.SENSORFOLDER, 'sensordata.log' ) )
         self.LW.log( f_loglines )
         data_array = alldata.splitlines()
         try:
@@ -36,11 +36,11 @@ class objectConfig():
             for one_value in all_values:
                 s_info = one_value.split(':')
                 if s_info[0].endswith('Temp'):
-                    sensordata.append( [s_info[0], self._convert_temp( s_info[1], tempscale )] )
+                    sensordata.append( [s_info[0], self._convert_temp( s_info[1] )] )
                 elif s_info[0].endswith('Humidity'):
                     sensordata.append( [s_info[0], s_info[1] + '%'] )
                 elif s_info[0].endswith('Pressure'):
-                    sensordata.append( [s_info[0], self._convert_pressure( s_info[1], tempscale )] )
+                    sensordata.append( [s_info[0], self._convert_pressure( s_info[1] )] )
                 else:
                     sensordata.append( [s_info[0], s_info[1]] )
             sensordata.append( ['PressureTrend', self._get_pressure_trend( data_array )] )
@@ -49,29 +49,29 @@ class objectConfig():
         return sensordata
 
         
-    def _convert_pressure( self, pressure, tempscale ):
-        if tempscale == '°F':
+    def _convert_pressure( self, pressure ):
+        if self.TEMPSCALE == '°F':
             return '%.2f' % (float( pressure ) * 0.0295301) + ' inHg'
         else:
             return pressure + ' mbar'
     
     
-    def _convert_temp( self, temperature, tempscale ):
-        if tempscale == '°C':
+    def _convert_temp( self, temperature ):
+        if self.TEMPSCALE == '°C':
             return temperature
-        elif tempscale == '°F':
+        elif self.TEMPSCALE == '°F':
             return str( int( (float( temperature ) * 9/5) + 32 ) )
-        elif tempscale == 'K':
+        elif self.TEMPSCALE == 'K':
             return str( int( float( temperature ) + 273.15 ) )
-        elif tempscale == '°Ré':
+        elif self.TEMPSCALE == '°Ré':
             return str( int( float( temperature ) * 4/5 ) )
-        elif tempscale == '°Ra':
+        elif self.TEMPSCALE == '°Ra':
             return str( int( (float( temperature ) * 273.15) * 9/5 ) )
-        elif tempscale == '°Rø':
+        elif self.TEMPSCALE == '°Rø':
             return str( int( (float( temperature ) * 21/40) + 7.5 ) )
-        elif tempscale == '°De':
+        elif self.TEMPSCALE == '°De':
             return str( int( (100 - float( temperature )) * 3/2 ) )
-        elif tempscale == '°N':
+        elif self.TEMPSCALE == '°N':
             return str( int( (float( temperature ) * 0.33) ) )
         else:
             return temperature

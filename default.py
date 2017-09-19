@@ -84,9 +84,7 @@ class Main:
             pass
         for plugin_name in plugins['names']:
             lw.log( ['checking %s for sensor data' % plugin_name[1]] )
-            s_foldername = addon.getSetting( 'folder_' + plugin_name[1] )
-            t_scale = xbmc.getInfoLabel('System.TemperatureUnits')
-            sensordata = plugins['objs'][plugin_name[1]].getSensorData( sensorfolder=s_foldername, tempscale=t_scale )
+            sensordata = plugins['objs'][plugin_name[1]].getSensorData()
             if sensordata:
                 lw.log( ['got sensor data from %s, so stop looking' % plugin_name[1]] )
                 break
