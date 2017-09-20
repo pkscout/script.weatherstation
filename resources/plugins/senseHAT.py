@@ -1,8 +1,8 @@
 #v.0.1.0
 # -*- coding: utf-8 -*-
 
-import os, time, xbmc
-from datetime import datetime
+import os, time, xbmc, subprocess
+from datetime import datetime 
 import _strptime # have to do to use strptime due to python bug
 from ..common.fileops import readFile, checkPath
 from ..common.xlogger import Logger
@@ -15,7 +15,6 @@ class objectConfig():
         self.P_RAPID = int( addon.getSetting( "rapid_pressure" ) )
         self.P_REGULAR = int( addon.getSetting( "regular_pressure" ) )
         self.P_DELTATIME = int( addon.getSetting( "p_deltatime" ) )
-        self.ADJUSTTEMP = addon.getSetting( "adjust_senseHAT" )
         self.TEMPSCALE = xbmc.getInfoLabel('System.TemperatureUnits')
         self.LOGDATEFORMAT = "%Y-%m-%d %H:%M:%S,%f"
 
@@ -58,23 +57,24 @@ class objectConfig():
     
     def _convert_temp( self, temperature ):
         if self.TEMPSCALE == '°C':
-            return temperature
+            temp_float =  float( temperature )
         elif self.TEMPSCALE == '°F':
-            return str( int( (float( temperature ) * 9/5) + 32 ) )
+            temp_float = (float( temperature ) * 9/5) + 32
         elif self.TEMPSCALE == 'K':
-            return str( int( float( temperature ) + 273.15 ) )
+            temp_float = float( temperature ) + 273.15
         elif self.TEMPSCALE == '°Ré':
-            return str( int( float( temperature ) * 4/5 ) )
+            temp_float = float( temperature ) * 4/5
         elif self.TEMPSCALE == '°Ra':
-            return str( int( (float( temperature ) * 273.15) * 9/5 ) )
+            temp_float = float( temperature ) * 273.15 * 9/5
         elif self.TEMPSCALE == '°Rø':
-            return str( int( (float( temperature ) * 21/40) + 7.5 ) )
+            temp_float = (float( temperature ) * 21/40) + 7.5
         elif self.TEMPSCALE == '°De':
-            return str( int( (100 - float( temperature )) * 3/2 ) )
+            temp_float = (100 - float( temperature )) * 3/2
         elif self.TEMPSCALE == '°N':
-            return str( int( (float( temperature ) * 0.33) ) )
+            temp_float = float( temperature ) * 0.33
         else:
-            return temperature
+            temp_float =  float( temperature )
+        return str( int( round( temp_float ) ) )
 
 
     def _get_pressure_compare_lines( self, data_array ):

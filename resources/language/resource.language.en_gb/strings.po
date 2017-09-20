@@ -57,7 +57,3 @@ msgstr ""
 msgctxt "#32303"
 msgid "  Sensor file location"
 msgstr ""
-
-msgctxt "#32304"
-msgid "  Adjust SenseHAT based on RPi CPU temp"
-msgstr ""
