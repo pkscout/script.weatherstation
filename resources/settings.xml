@@ -6,7 +6,8 @@
         <setting id="folder_senseHAT" type="folder" label="32303" visible="eq(-2,true)" default="" />
     </category>
     <category label="32200">
-    	<setting id="waittime" type="number" label="32202" default="10" />
+        <setting id="sensors_trigger" type="bool" label="32206" default="true" />
+    	<setting id="waittime" type="number" label="32202" visible="eq(-1,false)" default="10" />
     	<setting id="rapid_pressure" type="number" label="32203" default="10" />
     	<setting id="regular_pressure" type="number" label="32204" default="3" />
     	<setting id="p_deltatime" type="number" label="32205" default="180" />

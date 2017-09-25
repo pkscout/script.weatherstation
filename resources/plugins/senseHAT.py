@@ -42,7 +42,9 @@ class objectConfig():
                     sensordata.append( [s_info[0], self._convert_pressure( s_info[1] )] )
                 else:
                     sensordata.append( [s_info[0], s_info[1]] )
-            sensordata.append( ['PressureTrend', self._get_pressure_trend( data_array )] )
+            pressure_trend = self._get_pressure_trend( data_array )
+            if pressure_trend:
+                sensordata.append( ['PressureTrend', pressure_trend] )
             self.LW.log( ['returning sensor data'] )
             self.LW.log( sensordata )
         return sensordata
@@ -117,6 +119,7 @@ class objectConfig():
         except IndexError:
             current_pressure = 0
             previous_pressure = 0
+            return ''
         diff = current_pressure - previous_pressure
         if diff < 0:
             direction = 'falling'

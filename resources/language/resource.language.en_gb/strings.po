@@ -42,6 +42,10 @@ msgctxt "#32205"
 msgid "Time window for pressure comparison (in minutes)"
 msgstr ""
 
+msgctxt "#32206"
+msgid "Have sensors trigger updates"
+msgstr ""
+
 msgctxt "#32300"
 msgid "Sensor Info"
 msgstr ""

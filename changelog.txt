@@ -1,3 +1,6 @@
+v.0.0.3
+- added option for external sensors to trigger addon to update the weather window
+
 v.0.0.2
 - added pressure trend calculation to SenseHAT plugin
 

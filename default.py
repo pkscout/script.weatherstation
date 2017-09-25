@@ -71,9 +71,12 @@ class Main:
     def __init__( self ):
         self._get_settings()
         self._init_vars()
-        while (self._on_weather_window() and not xbmc.abortRequested):
+        if self.SENSORTRIGGER == 'true':
             self._set_properties( self._get_sensorinfo() )
-            self._wait( self.WAITTIME )
+        else:
+            while (self._on_weather_window() and not xbmc.abortRequested):
+                self._set_properties( self._get_sensorinfo() )
+                self._wait( self.WAITTIME )
    
 
     def _get_sensorinfo( self ):
@@ -96,6 +99,7 @@ class Main:
 
     def _get_settings( self ):
         self.WAITTIME = int( addon.getSetting( 'waittime' ) ) * 60
+        self.SENSORTRIGGER = addon.getSetting( 'sensors_trigger' )
 
 
     def _init_vars( self ):
