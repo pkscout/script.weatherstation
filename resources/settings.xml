@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
     <category label="32300">
-        <setting id="senseHAT" type="bool" label="32302" default="false" />
+        <setting id="senseHAT" type="bool" label="32302" default="true" />
         <setting id="priority_senseHAT" type="slider" label="32301" visible="eq(-1,true)" default="5" range='1,1,10' option='int' />
-        <setting id="folder_senseHAT" type="folder" label="32303" visible="eq(-2,true)" default="" />
+        <setting id="folder_senseHAT" type="folder" label="32303" visible="eq(-2,true)" default="/home/pi/rpi.weatherstation.lite/data" />
     </category>
     <category label="32200">
         <setting id="sensors_trigger" type="bool" label="32206" default="true" />

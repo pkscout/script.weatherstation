@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.weatherstation" name="Weather Station" version="0.0.4" provider-name="pkscout">
+<addon id="script.weatherstation" name="Weather Station" version="0.0.5" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="xbmc.addon" version="14.0.0"/>
@@ -10,12 +10,9 @@
 	<extension point="xbmc.addon.metadata">
 		<news>
 		</news>
-		<summary lang="en">Download images and additional info of the currently playing artist</summary>
-		<summary lang="en_NZ">Download images and additional info of the currently playing artist</summary>
-		<summary lang="en_US">Download images and additional info of the currently playing artist</summary>
-		<description lang="en">Reads weather data from sensors (currently only SenseHAT for RPi and adds that information to the weather window properties.</description>
-		<description lang="en_NZ">Reads weather data from sensors (currently only SenseHAT for RPi and adds that information to the weather window properties.</description>
-		<description lang="en_US">Reads weather data from sensors (currently only SenseHAT for RPi and adds that information to the weather window properties.</description>
+		<description lang="en">Reads weather data from sensors (currently only SenseHAT for RPi) and adds that information to the weather window properties.</description>
+		<description lang="en_NZ">Reads weather data from sensors (currently only SenseHAT for RPi) and adds that information to the weather window properties.</description>
+		<description lang="en_US">Reads weather data from sensors (currently only SenseHAT for RPi) and adds that information to the weather window properties.</description>
 		<language></language>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
