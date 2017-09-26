@@ -104,7 +104,7 @@ class objectConfig():
         target_seconds = self.P_DELTATIME * 60
         try:
             target = data_array[-int( target_seconds/tdelta.total_seconds() )]
-        except IndexError:
+        except (IndexError, ZeroDivisionError) as error:
             target = data_array[0]
         return last, target        
 
