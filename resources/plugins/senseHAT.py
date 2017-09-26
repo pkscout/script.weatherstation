@@ -1,4 +1,4 @@
-#v.0.1.0
+#v.0.1.1
 # -*- coding: utf-8 -*-
 
 import os, time, xbmc, subprocess
