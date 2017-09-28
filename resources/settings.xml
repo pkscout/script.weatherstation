@@ -7,11 +7,8 @@
 		<setting label="" visible="eq(-3,true)" type="lsep" />
 		<setting label="32304" visible="eq(-4,true)" type="lsep" />
 		<setting label="32305" visible="eq(-5,true)"type="lsep" />
-
     </category>
     <category label="32200">
-        <setting id="sensors_trigger" type="bool" label="32206" default="true" />
-    	<setting id="waittime" type="number" label="32202" visible="eq(-1,false)" default="10" />
     	<setting id="rapid_pressure" type="number" label="32203" default="10" />
     	<setting id="regular_pressure" type="number" label="32204" default="3" />
     	<setting id="p_deltatime" type="number" label="32205" default="180" />

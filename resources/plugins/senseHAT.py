@@ -1,11 +1,16 @@
-#v.0.1.1
+#v.0.2.0
 # -*- coding: utf-8 -*-
 
-import os, time, xbmc, subprocess
+import os, sys, time, xbmc
 from datetime import datetime 
 import _strptime # have to do to use strptime due to python bug
 from ..common.fileops import readFile, checkPath
 from ..common.xlogger import Logger
+if sys.version_info >= (2, 7):
+    import json as _json
+else:
+    import simplejson as _json
+
 
 
 class objectConfig():
@@ -18,7 +23,15 @@ class objectConfig():
         self.TEMPSCALE = xbmc.getInfoLabel('System.TemperatureUnits')
         self.LOGDATEFORMAT = "%Y-%m-%d %H:%M:%S,%f"
 
-        
+       
+    def handlePassback( self, action ):
+        message = { "jsonrpc": "2.0",
+                    "method": "JSONRPC.NotifyAll",
+                    "params": {"sender": "Weatherstation", "message": "RPIWSL_VariablePass", "data": {"action":action}},
+                    "id": 1 }
+        xbmc.executeJSONRPC( _json.dumps( message ) )
+        return 'passed message via websockets to rpi.weatherstation.lite'
+ 
     def getSensorData( self ):
         loglines = []
         sensordata = []

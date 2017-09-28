@@ -1,21 +1,8 @@
 # *  Credits:
 # *
-# *  original Artist Slideshow code by ronie
-# *  updates and additions since v1.3.0 by pkscout
-# *
-# *  divingmule for script.image.lastfm.slideshow
-# *  grajen3 for script.ImageCacher
-# *  sfaxman for smartUnicode
-# *
-# *  code from all scripts/examples are used in script.artistslideshow
-# *  
-# *  Last.fm:      http://www.last.fm/
-# *  fanart.tv:    http://www.fanart.tv
-# *  theaudiodb:   http://www.theaudiodb.com
-# *  htbackdrops:  http://www.htbackdrops.org
+# *  original Weather Station Code by pkscout
 
-import xbmc, xbmcaddon, xbmcgui, xbmcvfs
-import itertools, os, random, re, sys, time
+import sys, xbmc, xbmcaddon, xbmcgui
 from resources.common.xlogger import Logger
 import resources.plugins
 
@@ -66,20 +53,15 @@ for module in resources.plugins.__all__:
         lw.log( ['added %s to weather sensor plugins' % module] )
 
 
+
 class Main:
 
     def __init__( self ):
-        self._get_settings()
-        self._init_vars()
-        if self.SENSORTRIGGER == 'true':
-            self._set_properties( self._get_sensorinfo() )
-        else:
-            while (self._on_weather_window() and not xbmc.abortRequested):
-                self._set_properties( self._get_sensorinfo() )
-                self._wait( self.WAITTIME )
+        self.WINDOWID = 12600
+        self.WINDOW = xbmcgui.Window( int(self.WINDOWID) )
    
 
-    def _get_sensorinfo( self ):
+    def GetSensorInfo( self ):
         sensordata = []
         try:
             plugins['names'].sort( key=lambda x: x[0] )
@@ -91,32 +73,28 @@ class Main:
             if sensordata:
                 lw.log( ['got sensor data from %s, so stop looking' % plugin_name[1]] )
                 break
-        if sensordata:
-            return sensordata
-        else:
-            return []
+        self._set_properties( sensordata )
 
 
-    def _get_settings( self ):
-        self.WAITTIME = int( addon.getSetting( 'waittime' ) ) * 60
-        self.SENSORTRIGGER = addon.getSetting( 'sensors_trigger' )
+    def Passback( self, action ):
+        try:
+            plugins['names'].sort( key=lambda x: x[0] )
+        except TypeError:
+            pass
+        for plugin_name in plugins['names']:
+            data = ''
+            if action == 'AutoDimOn':
+                self._set_property( 'AutoDim', 'True' )
+            elif action == 'AutoDimOff':
+                self._set_property( 'AutoDim', 'False' )
+            lw.log( ['passing action %s to %s' % (action, plugin_name[1])] )
+            result = plugins['objs'][plugin_name[1]].handlePassback( action )
+            lw.log( ['got %s back from %s' % (result, plugin_name[1])] )
 
 
-    def _init_vars( self ):
-        self.WINDOWID = 12600
-        self.WINDOW = xbmcgui.Window( int(self.WINDOWID) )
-        
-
-    def _on_weather_window( self ):
-        if xbmcgui.getCurrentWindowId() == self.WINDOWID:
-            return True
-        else:
-            return False
-    
-
-    def _set_properties( self, sensordata ):
-        for one_entry in sensordata:
-            self._set_property( one_entry[0], one_entry[1] )
+    def _set_properties( self, properties ):
+        for property in properties:
+            self._set_property( property[0], property[1] )
         
 
     def _set_property( self, property_name, value=""):
@@ -129,18 +107,24 @@ class Main:
           lw.log( ["Exception: Couldn't set propery " + property_name + " value " + value , e])
 
 
-    def _wait( self, wait_time ):
-        lw.log( ['waiting %s minutes to read from sensor again' % addon.getSetting( 'waittime' )] )
-        waited = 0
-        while( waited < wait_time ):
-            time.sleep(0.1)
-            waited = waited + 0.1
-            if xbmc.abortRequested or not self._on_weather_window():
-                return
+def _parse_argv():
+    try:
+        params = dict( arg.split( "=" ) for arg in sys.argv[ 1 ].split( "&" ) )
+    except IndexError:
+        params = {}        
+    except Exception, e:
+        lw.log( ['unexpected error while parsing arguments', e] )
+        params = {}
+    return params.get( "action", "GetSensorInfo")
 
 
 if ( __name__ == "__main__" ):
     lw.log( ['script version %s started' % addonversion], xbmc.LOGNOTICE )
     lw.log( ['debug logging set to %s' % logdebug], xbmc.LOGNOTICE )
-    weatherstation = Main()
+    ws = Main()
+    action = _parse_argv()
+    if action == 'GetSensorInfo':
+        ws.GetSensorInfo()
+    else:
+        ws.Passback( action )
 lw.log( ['script stopped'], xbmc.LOGNOTICE )

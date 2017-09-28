@@ -1,3 +1,9 @@
+v.0.1.0
+- feature complete
+- now sends plugins passback information based on skin buttons
+- can set AutoDim status based on script arguments (see README)
+- external sensor or some other script must trigger this periodically
+
 v.0.0.5
 - changed default settings
 
