@@ -87,6 +87,10 @@ class Main:
                 self._set_property( 'AutoDim', 'True' )
             elif action == 'AutoDimOff':
                 self._set_property( 'AutoDim', 'False' )
+            elif action == 'ScreenOff':
+                self._set_property( 'ScreenStatus', 'Off' )
+            elif action == 'ScreenOn':
+                self._set_property( 'ScreenStatus', 'On' )
             lw.log( ['passing action %s to %s' % (action, plugin_name[1])] )
             result = plugins['objs'][plugin_name[1]].handlePassback( action )
             lw.log( ['got %s back from %s' % (result, plugin_name[1])] )
