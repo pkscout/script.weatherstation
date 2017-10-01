@@ -15,7 +15,7 @@ else:
 
 class objectConfig():
     def __init__( self, addon ):
-        self.LW = Logger( preamble='[Weather Station-SenseHAT]', logdebug=addon.getSetting( "logging" ) )
+        self.LW = Logger( preamble='[WS Lite - SenseHAT]', logdebug=addon.getSetting( "logging" ) )
         self.SENSORFOLDER = addon.getSetting( "folder_senseHAT" )
         self.P_RAPID = int( addon.getSetting( "rapid_pressure" ) )
         self.P_REGULAR = int( addon.getSetting( "regular_pressure" ) )

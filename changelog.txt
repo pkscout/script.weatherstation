@@ -1,3 +1,6 @@
+v.0.2.1
+- updates due to name change
+
 v.0.2.0
 - added option to hide mouse cursor (skin must provide needed files)
 

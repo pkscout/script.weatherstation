@@ -1,6 +1,6 @@
 # *  Credits:
 # *
-# *  original Weather Station Code by pkscout
+# *  original Weather Station Lite Code by pkscout
 
 import os, sys, xbmc, xbmcaddon, xbmcgui, xbmcvfs
 from resources.common.xlogger import Logger
@@ -12,7 +12,7 @@ addonversion = addon.getAddonInfo('version')
 addonpath    = addon.getAddonInfo('path').decode('utf-8')
 addonicon    = xbmc.translatePath('%s/icon.png' % addonpath )
 language     = addon.getLocalizedString
-preamble     = '[Weather Station]'
+preamble     = '[WS Lite]'
 logdebug     = addon.getSetting( "logging" ) 
 
 lw = Logger( preamble=preamble, logdebug=logdebug )
