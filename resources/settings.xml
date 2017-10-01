@@ -13,5 +13,9 @@
     	<setting id="regular_pressure" type="number" label="32204" default="3" />
     	<setting id="p_deltatime" type="number" label="32205" default="180" />
         <setting id="logging" type="bool" label="32201" default="false" />
+		<setting label="" type="lsep" />
+		<setting label="32306" type="action" action="RunScript(script.weatherstation, action=HideCursor)"/>
+		<setting label="32307" type="action" action="RunScript(script.weatherstation, action=ShowCursor)"/>
+		<setting label="32308" type="lsep" />
     </category>
 </settings>

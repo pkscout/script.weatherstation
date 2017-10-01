@@ -69,3 +69,19 @@ msgstr ""
 msgctxt "#32305"
 msgid "https://github.com/pkscout/rpi.weatherstation.lite"
 msgstr ""
+
+msgctxt "#32306"
+msgid "Hide mouse cursor"
+msgstr ""
+
+msgctxt "#32307"
+msgid "Show mouse cursor"
+msgstr ""
+
+msgctxt "#32308"
+msgid "Show/Hide mouse cursor requires restarting Kodi"
+msgstr ""
+
+msgctxt "#32309"
+msgid "Skin name"
+msgstr ""

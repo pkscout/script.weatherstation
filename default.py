@@ -2,7 +2,7 @@
 # *
 # *  original Weather Station Code by pkscout
 
-import sys, xbmc, xbmcaddon, xbmcgui
+import os, sys, xbmc, xbmcaddon, xbmcgui, xbmcvfs
 from resources.common.xlogger import Logger
 import resources.plugins
 
@@ -76,6 +76,14 @@ class Main:
         self._set_properties( sensordata )
 
 
+    def HideCursor( self ):
+        self._replace_pointer_xml( 'Pointer-Hidden.xml' )
+        
+    
+    def ShowCursor( self ):
+        self._replace_pointer_xml( 'Pointer-Visible.xml' )
+
+
     def Passback( self, action ):
         try:
             plugins['names'].sort( key=lambda x: x[0] )
@@ -94,6 +102,15 @@ class Main:
             lw.log( ['passing action %s to %s' % (action, plugin_name[1])] )
             result = plugins['objs'][plugin_name[1]].handlePassback( action )
             lw.log( ['got %s back from %s' % (result, plugin_name[1])] )
+
+
+    def _replace_pointer_xml( self, newfile ):
+        addon_dir_path = os.path.join( addonpath, '..' )
+        skin_xml_path = os.path.join( addon_dir_path, xbmc.getSkinDir(), 'xml' )
+        current_xml = os.path.join( skin_xml_path, 'Pointer.xml' )
+        replacement_xml = os.path.join( skin_xml_path, newfile )
+        lw.log( ['copying %s to %s' % (replacement_xml, current_xml)] )
+        xbmcvfs.copy( replacement_xml, current_xml )
 
 
     def _set_properties( self, properties ):
@@ -129,6 +146,10 @@ if ( __name__ == "__main__" ):
     action = _parse_argv()
     if action == 'GetSensorInfo':
         ws.GetSensorInfo()
+    elif action == 'HideCursor':
+        ws.HideCursor()
+    elif action == 'ShowCursor':
+        ws.ShowCursor()
     else:
         ws.Passback( action )
 lw.log( ['script stopped'], xbmc.LOGNOTICE )
