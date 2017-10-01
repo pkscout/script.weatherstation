@@ -1,3 +1,6 @@
+v.0.2.0
+- added option to hide mouse cursor (skin must provide needed files)
+
 v.0.1.1
 - new handling off screen status function and messages
 
