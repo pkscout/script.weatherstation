@@ -1,3 +1,9 @@
+v.1.0.0~beta1
+- all data communications now done via WebSockets
+- renamed SenseHAT plugin to rpi-weatherstation-lite
+- pressure trend calculations no longer done in rpiwl plugin
+- removed unneeded settings
+
 v.0.2.1
 - updates due to name change
 
