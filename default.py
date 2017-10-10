@@ -111,8 +111,8 @@ def _parse_argv():
 
 
 if ( __name__ == "__main__" ):
-    lw.log( ['script version %s started' % addonversion], xbmc.LOGNOTICE )
-    lw.log( ['debug logging set to %s' % logdebug], xbmc.LOGNOTICE )
+    lw.log( ['script version %s started' % addonversion] )
+    lw.log( ['debug logging set to %s' % logdebug] )
     ws = Main()
     action, target, data = _parse_argv()
     if action is not None:
@@ -124,4 +124,4 @@ if ( __name__ == "__main__" ):
             ws.ShowCursor()
         else:
             ws.Passback( action )
-lw.log( ['script stopped'], xbmc.LOGNOTICE )
+lw.log( ['script stopped'] )
