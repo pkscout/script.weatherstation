@@ -30,14 +30,9 @@ class objectConfig():
         for one_value in all_values:
             s_info = one_value.split(':')
             if s_info[0].endswith('Temp'):
-                if s_info[1] is not 'None':
-                    sensordata.append( [s_info[0], self._convert_temp( s_info[1] )] )
+                sensordata.append( [s_info[0], self._convert_temp( s_info[1] )] )
             elif s_info[0].endswith('Humidity'):
-                if s_info[1] == 'None':
-                    humidity = ''
-                else:
-                    humidity = s_info[1] + '%'
-                sensordata.append( [s_info[0], humidity] )
+                sensordata.append( [s_info[0], self._convert_humidity( s_info[1] )] )
             elif s_info[0].endswith('Pressure'):
                 sensordata.append( [s_info[0], self._convert_pressure( s_info[1] )] )
             else:
@@ -46,6 +41,12 @@ class objectConfig():
         return sensordata
 
         
+    def _convert_humidity( self, humidity ):
+        if humidity == 'None':
+            return ''
+        return str( int( round( float( humidity ) ) ) ) + '%'
+
+
     def _convert_pressure( self, pressure ):
         if pressure == 'None':
             return ''
