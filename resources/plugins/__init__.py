@@ -1,1 +1,1 @@
-__all__ = ['senseHAT']
+__all__ = ['rpi-weatherstation-lite']

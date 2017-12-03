@@ -18,70 +18,18 @@ msgstr ""
 
 #Dialog Text
 
-msgctxt "#32200"
-msgid "Advanced"
-msgstr ""
-
 msgctxt "#32201"
 msgid "Enable debug logging"
 msgstr ""
 
 msgctxt "#32202"
-msgid "Sensor read interval (in minutes)"
-msgstr ""
-
-msgctxt "#32203"
-msgid "Rapid pressure change (in millibars)"
-msgstr ""
-
-msgctxt "#32204"
-msgid "Regular pressure change (in millibars)"
-msgstr ""
-
-msgctxt "#32205"
-msgid "Time window for pressure comparison (in minutes)"
-msgstr ""
-
-msgctxt "#32206"
-msgid "Have sensors trigger updates"
-msgstr ""
-
-msgctxt "#32300"
-msgid "SenseHAT"
-msgstr ""
-
-msgctxt "#32301"
-msgid "Priority"
-msgstr ""
-
-msgctxt "#32302"
-msgid "Get readings from SenseHAT"
-msgstr ""
-
-msgctxt "#32303"
-msgid "Sensor file location"
-msgstr ""
-
-msgctxt "#32304"
-msgid "requires external rpi.weatherstation.lite script available at:"
-msgstr ""
-
-msgctxt "#32305"
-msgid "https://github.com/pkscout/rpi.weatherstation.lite"
-msgstr ""
-
-msgctxt "#32306"
 msgid "Hide mouse cursor"
 msgstr ""
 
-msgctxt "#32307"
+msgctxt "#32203"
 msgid "Show mouse cursor"
 msgstr ""
 
-msgctxt "#32308"
+msgctxt "#32301"
 msgid "Show/Hide mouse cursor requires restarting Kodi"
-msgstr ""
-
-msgctxt "#32309"
-msgid "Skin name"
 msgstr ""

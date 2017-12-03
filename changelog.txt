@@ -1,3 +1,11 @@
+v.1.0.0
+- handle None sent from sensors to blank that item on the display
+- removed all non-debug logging
+- all data communications now done via WebSockets
+- renamed SenseHAT plugin to rpi-weatherstation-lite
+- pressure trend calculations no longer done in rpiwl plugin
+- removed unneeded settings
+
 v.0.2.1
 - updates due to name change
 
