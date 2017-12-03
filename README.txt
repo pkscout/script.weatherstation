@@ -1,4 +1,4 @@
-A little addon to read data from weather sensors (currently only SenseHAT for RPi) and add that information to the Kodi weather window properties.
+A little addon to read data from external sources and add that information to the Kodi weather window properties.
 
 This script is designed as run and done.  The external sensor or some other script will have to trigger it to update the weather window properties.  The script has a plugin architecture so that additional sensor types can be easily added.  Plugins must support two method calls:
 

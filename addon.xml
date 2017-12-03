@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.0.0~beta4" provider-name="pkscout">
+<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.0.0" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="xbmc.addon" version="14.0.0"/>
@@ -9,9 +9,9 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news></news>
-		<description lang="en">Reads weather data from sensors (currently only SenseHAT for RPi) and adds that information to the weather window properties.</description>
-		<description lang="en_NZ">Reads weather data from sensors (currently only SenseHAT for RPi) and adds that information to the weather window properties.</description>
-		<description lang="en_US">Reads weather data from sensors (currently only SenseHAT for RPi) and adds that information to the weather window properties.</description>
+		<description lang="en">Reads weather data from external sources and adds that information to the weather window properties.</description>
+		<description lang="en_NZ">Reads weather data from from external sources and adds that information to the weather window properties.</description>
+		<description lang="en_US">Reads weather data from from external sources and adds that information to the weather window properties.</description>
 		<language></language>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license>
