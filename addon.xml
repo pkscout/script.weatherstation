@@ -2,7 +2,7 @@
 <addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.0.2~beta2" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
-		<import addon="xbmc.addon" version="14.0.0"/>
+		<import addon="xbmc.addon" version="17.0.0"/>
 	</requires>
 	<extension point="xbmc.python.script" library="default.py">
 		<provides>executable</provides>
