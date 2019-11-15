@@ -2,18 +2,20 @@
 # *
 # *  original Weather Station Lite Code by pkscout
 
-import os, sys, xbmc, xbmcaddon, xbmcgui, xbmcvfs
+from kodi_six import xbmc, xbmcaddon, xbmcgui, xbmcvfs
+import os, sys
 from resources.common.xlogger import Logger
+from resources.common.kodisettings import getSettingBool, getSettingInt, getSettingNumber, getSettingString
 import resources.plugins
 
 addon        = xbmcaddon.Addon()
 addonname    = addon.getAddonInfo('id')
 addonversion = addon.getAddonInfo('version')
-addonpath    = addon.getAddonInfo('path').decode('utf-8')
+addonpath    = addon.getAddonInfo('path')
 addonicon    = xbmc.translatePath('%s/icon.png' % addonpath )
 language     = addon.getLocalizedString
 preamble     = '[WS Lite]'
-logdebug     = addon.getSetting( "logging" ) 
+logdebug     = getSettingBool( addon, 'logging' ) 
 
 lw = Logger( preamble=preamble, logdebug=logdebug )
 

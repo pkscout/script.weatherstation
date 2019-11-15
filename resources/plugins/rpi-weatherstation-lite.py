@@ -1,18 +1,16 @@
-#v.0.2.0
+#v.0.3.0
 # -*- coding: utf-8 -*-
 
-import os, sys, xbmc
-from ..common.xlogger import Logger
-if sys.version_info >= (2, 7):
-    import json as _json
-else:
-    import simplejson as _json
+import json as _json
+from kodi_six import xbmc
+from resources.common.xlogger import Logger
+from resources.common.kodisettings import getSettingBool, getSettingInt, getSettingNumber, getSettingString
 
 
 
 class objectConfig():
     def __init__( self, addon ):
-        self.LW = Logger( preamble='[WS Lite - SenseHAT]', logdebug=addon.getSetting( "logging" ) )
+        self.LW = Logger( preamble='[WS Lite - Sensors]', logdebug=getSettingBool( addon, 'logging' ) )
         self.TEMPSCALE = xbmc.getInfoLabel('System.TemperatureUnits')
 
        
@@ -29,11 +27,11 @@ class objectConfig():
         all_values = data.split(';')
         for one_value in all_values:
             s_info = one_value.split(':')
-            if s_info[0].endswith('Temp'):
+            if s_info[0].lower().endswith('temp'):
                 sensordata.append( [s_info[0], self._convert_temp( s_info[1] )] )
-            elif s_info[0].endswith('Humidity'):
+            elif s_info[0].lower().endswith('humidity'):
                 sensordata.append( [s_info[0], self._convert_humidity( s_info[1] )] )
-            elif s_info[0].endswith('Pressure'):
+            elif s_info[0].lower().endswith('pressure'):
                 sensordata.append( [s_info[0], self._convert_pressure( s_info[1] )] )
             else:
                 sensordata.append( [s_info[0], s_info[1]] )
@@ -42,13 +40,13 @@ class objectConfig():
 
         
     def _convert_humidity( self, humidity ):
-        if humidity == 'None':
+        if humidity.lower() == 'none':
             return ''
         return str( int( round( float( humidity ) ) ) ) + '%'
 
 
     def _convert_pressure( self, pressure ):
-        if pressure == 'None':
+        if pressure.lower() == 'none':
             return ''
         if self.TEMPSCALE == '°F':
             return '%.2f' % (float( pressure ) * 0.0295301) + ' inHg'
@@ -57,7 +55,7 @@ class objectConfig():
     
     
     def _convert_temp( self, temperature ):
-        if temperature == 'None':
+        if temperature.lower() == 'none':
             return ''
         if self.TEMPSCALE == '°C':
             temp_float =  float( temperature )
