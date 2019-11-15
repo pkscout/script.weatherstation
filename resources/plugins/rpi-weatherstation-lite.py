@@ -1,8 +1,9 @@
-#v.0.3.0
+#v.0.3.1
 # -*- coding: utf-8 -*-
 
 import json as _json
 from kodi_six import xbmc
+from kodi_six.utils import py2_encode, py2_decode
 from resources.common.xlogger import Logger
 from resources.common.kodisettings import getSettingBool, getSettingInt, getSettingNumber, getSettingString
 
@@ -11,7 +12,7 @@ from resources.common.kodisettings import getSettingBool, getSettingInt, getSett
 class objectConfig():
     def __init__( self, addon ):
         self.LW = Logger( preamble='[WS Lite - Sensors]', logdebug=getSettingBool( addon, 'logging' ) )
-        self.TEMPSCALE = xbmc.getInfoLabel('System.TemperatureUnits')
+        self.TEMPSCALE = py2_encode( xbmc.getInfoLabel('System.TemperatureUnits') )
 
        
     def handlePassback( self, action ):
@@ -57,21 +58,21 @@ class objectConfig():
     def _convert_temp( self, temperature ):
         if temperature.lower() == 'none':
             return ''
-        if self.TEMPSCALE == '°C':
+        if self.TEMPSCALE == py2_encode( '°C' ):
             temp_float =  float( temperature )
-        elif self.TEMPSCALE == '°F':
+        elif self.TEMPSCALE == py2_encode( '°F' ):
             temp_float = (float( temperature ) * 9/5) + 32
-        elif self.TEMPSCALE == 'K':
+        elif self.TEMPSCALE == py2_encode( 'K' ):
             temp_float = float( temperature ) + 273.15
-        elif self.TEMPSCALE == '°Ré':
+        elif self.TEMPSCALE == py2_encode( '°Ré' ):
             temp_float = float( temperature ) * 4/5
-        elif self.TEMPSCALE == '°Ra':
+        elif self.TEMPSCALE == py2_encode( '°Ra' ):
             temp_float = float( temperature ) * 273.15 * 9/5
-        elif self.TEMPSCALE == '°Rø':
+        elif self.TEMPSCALE == py2_encode( '°Rø' ):
             temp_float = (float( temperature ) * 21/40) + 7.5
-        elif self.TEMPSCALE == '°De':
+        elif self.TEMPSCALE == py2_encode( '°De' ):
             temp_float = (100 - float( temperature )) * 3/2
-        elif self.TEMPSCALE == '°N':
+        elif self.TEMPSCALE == py2_encode( '°N' ):
             temp_float = float( temperature ) * 0.33
         else:
             temp_float =  float( temperature )
