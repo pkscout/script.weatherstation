@@ -1,5 +1,5 @@
-v,1.1.0~beta1
-- Python 2/3 compatability
+v,1.1.0
+- Python 2/3 compatibility
 - updated common libraries
 
 v.1.0.1
