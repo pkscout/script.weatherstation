@@ -1,63 +1,40 @@
 #v.0.0.1
 
-def _getsetting( addon, name, default, type="string" ):
-    if type.lower() == "bool":
+def _get_setting( addon, setting_name, default, thetype="string" ):
+    if thetype.lower() == "bool":
+        if addon.getSetting( setting_name ).lower() == 'true':
+            return True
+        if addon.getSetting( setting_name ).lower() == 'false':
+            return False
+        return default
+    if thetype.lower() == "int":
         try:
-            thebool = addon.getSettingBool( name )
-            if thebool == 0:
-                return False
-            elif thebool == 1:
-                return True
-            else:
-                return thebool
-        except TypeError:
+            return int( addon.getSetting( setting_name ) )
+        except ValueError:
             return default
-        except AttributeError:
-            if addon.getSetting( name ).lower() == 'true':
-                return True
-            if addon.getSetting( name ).lower() == 'false':
-                return False
-            return default
-    if type.lower() == "int":
+    if thetype.lower() == "number":
         try:
-            return addon.getSettingInt( name )
-        except TypeError:
+            return float( addon.getSetting( setting_name ) )
+        except ValueError:
             return default
-        except AttributeError:
-            try:
-                return int( addon.getSetting( name ) )
-            except:
-                return default
-    if type.lower() == "number":
-        try:
-            return addon.getSettingNumber( name )
-        except TypeError:
-            return default
-        except AttributeError:
-            try:
-                return float( addon.getSetting( name ) )
-            except:
-                return default
     else:
-        setting = addon.getSetting( name )
+        setting = addon.getSetting( setting_name )
         if setting:
             return setting
         else:
             return default
 
 
-def getSettingBool( addon, name, default=False ):
-    return _getsetting( addon, name, default, 'bool' )
+def getSettingBool( addon, setting_name, default=False ):
+    return _get_setting( addon, setting_name, default, 'bool' )
 
 
-def getSettingInt( addon, name, default=0 ):
-    return _getsetting( addon, name, default, 'int')
+def getSettingInt( addon, setting_name, default=0 ):
+    return _get_setting( addon, setting_name, default, 'int' )
 
 
-def getSettingNumber( addon, name, default=0.0 ):
-    return _getsetting( addon, name, default, 'number')
+def getSettingNumber( addon, setting_name, default=0.0 ):
+    return _get_setting( addon, setting_name, default, 'number' )
 
-
-def getSettingString( addon, name, default='' ):
-    return _getsetting( addon, name, default, 'string')
-
+def getSettingString( addon, setting_name, default='' ):
+    return _get_setting( addon, setting_name, default, 'string' )
