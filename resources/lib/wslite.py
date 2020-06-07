@@ -67,7 +67,7 @@ class Main:
     def _set_properties( self, properties ):
         for oneprop in properties:
             self._set_property( oneprop[0], oneprop[1] )
-        
+
 
     def _set_property( self, property_name, value=""):
         try:
