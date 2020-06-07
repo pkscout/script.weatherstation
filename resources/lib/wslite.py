@@ -2,8 +2,8 @@
 # *
 # *  original Weather Station Lite Code by pkscout
 
-from kodi_six import xbmc, xbmcaddon, xbmcgui, xbmcvfs
-import os, sys
+from kodi_six import xbmc, xbmcgui
+import sys
 from resources.lib.wslsettings import loadSettings
 from resources.lib.xlogger import Logger
 from resources.plugins import *
@@ -26,10 +26,9 @@ class Main:
             else:
                 self._passback( action )
         LW.log( ['script stopped'], xbmc.LOGNOTICE )
-  
+
 
     def _passback( self, action ):
-        data = ''
         if action == 'AutoDimOn':
             self._set_property( 'AutoDim', 'True' )
         elif action == 'AutoDimOff':
@@ -66,8 +65,8 @@ class Main:
 
 
     def _set_properties( self, properties ):
-        for property in properties:
-            self._set_property( property[0], property[1] )
+        for oneprop in properties:
+            self._set_property( oneprop[0], oneprop[1] )
         
 
     def _set_property( self, property_name, value=""):

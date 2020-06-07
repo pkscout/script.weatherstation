@@ -2,7 +2,7 @@
 
 import json
 from kodi_six import xbmc
-from kodi_six.utils import py2_encode, py2_decode
+from kodi_six.utils import py2_encode
 
 
 
@@ -12,7 +12,7 @@ class SensorInterface:
         """Initialize the sensor class."""
         self.TEMPSCALE = py2_encode( xbmc.getInfoLabel('System.TemperatureUnits') )
 
-       
+
     def handlePassback( self, action ):
         message = { "jsonrpc": "2.0",
                     "method": "JSONRPC.NotifyAll",
@@ -20,8 +20,8 @@ class SensorInterface:
                     "id": 1 }
         xbmc.executeJSONRPC( json.dumps( message ) )
         return 'passed message via websockets to rpi.weatherstation.lite'
- 
- 
+
+
     def getSensorData( self, data=None ):
         sensordata = []
         all_values = data.split(';')
@@ -37,7 +37,7 @@ class SensorInterface:
                 sensordata.append( [s_info[0], s_info[1]] )
         return sensordata
 
-        
+
     def _convert_humidity( self, humidity ):
         if humidity.lower() == 'none':
             return ''
@@ -51,8 +51,8 @@ class SensorInterface:
             return '%.2f' % (float( pressure ) * 0.0295301) + ' inHg'
         else:
             return pressure + ' mbar'
-    
-    
+
+
     def _convert_temp( self, temperature ):
         if temperature.lower() == 'none':
             return ''
@@ -75,4 +75,3 @@ class SensorInterface:
         else:
             temp_float =  float( temperature )
         return str( int( round( temp_float ) ) )
-
