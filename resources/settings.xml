@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-	<setting id="logging" type="bool" label="32201" default="false" />
-	<setting label="" type="lsep" />
-	<setting label="32202" type="action" action="RunScript(script.weatherstation.lite, action=HideCursor)"/>
-	<setting label="32203" type="action" action="RunScript(script.weatherstation.lite, action=ShowCursor)"/>
-	<setting label="32301" type="lsep" />
+	<setting id="sensor_interface" type="enum" label="32202" default="0" lvalues="32303" />
+	<setting id="debug" type="bool" label="32201" default="false" />
 </settings>

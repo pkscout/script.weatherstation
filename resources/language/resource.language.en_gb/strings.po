@@ -23,13 +23,10 @@ msgid "Enable debug logging"
 msgstr ""
 
 msgctxt "#32202"
-msgid "Hide mouse cursor"
+msgid "Select sensor interface"
 msgstr ""
 
 msgctxt "#32203"
-msgid "Show mouse cursor"
+msgid "RPI Weatherstation Lite"
 msgstr ""
 
-msgctxt "#32301"
-msgid "Show/Hide mouse cursor requires restarting Kodi"
-msgstr ""

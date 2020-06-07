@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.1.0~beta1" provider-name="pkscout">
+<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.1.1" provider-name="pkscout">
 	<requires>
-		<import addon="xbmc.python" version="2.25.0" />
-		<import addon="xbmc.addon" version="17.0.0" />
+		<import addon="xbmc.python" version="2.26.0" />
 		<import addon="script.module.kodi-six" version="0.0.3" />
-		<import addon="script.module.future" version="0.16.0.4" />
 	</requires>
 	<extension point="xbmc.python.script" library="default.py">
 		<provides>executable</provides>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.1.1.0
-Python 2/3 compatability
+v.1.1.1
+- restructured addon to match other development work
 		</news>
 		<assets>
         	<icon>icon.png</icon>

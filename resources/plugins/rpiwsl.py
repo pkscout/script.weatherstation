@@ -1,17 +1,15 @@
-#v.0.3.1
 # -*- coding: utf-8 -*-
 
-import json as _json
+import json
 from kodi_six import xbmc
 from kodi_six.utils import py2_encode, py2_decode
-from resources.common.xlogger import Logger
-from resources.common.kodisettings import getSettingBool, getSettingInt, getSettingNumber, getSettingString
 
 
 
-class objectConfig():
-    def __init__( self, addon ):
-        self.LW = Logger( preamble='[WS Lite - Sensors]', logdebug=getSettingBool( addon, 'logging' ) )
+class SensorInterface:
+
+    def __init__( self ):
+        """Initialize the sensor class."""
         self.TEMPSCALE = py2_encode( xbmc.getInfoLabel('System.TemperatureUnits') )
 
        
@@ -20,8 +18,9 @@ class objectConfig():
                     "method": "JSONRPC.NotifyAll",
                     "params": {"sender": "Weatherstation", "message": "RPIWSL_VariablePass", "data": {"action":action}},
                     "id": 1 }
-        xbmc.executeJSONRPC( _json.dumps( message ) )
+        xbmc.executeJSONRPC( json.dumps( message ) )
         return 'passed message via websockets to rpi.weatherstation.lite'
+ 
  
     def getSensorData( self, data=None ):
         sensordata = []
@@ -36,7 +35,6 @@ class objectConfig():
                 sensordata.append( [s_info[0], self._convert_pressure( s_info[1] )] )
             else:
                 sensordata.append( [s_info[0], s_info[1]] )
-        self.LW.log( ['returning sensor data', sensordata] )
         return sensordata
 
         
