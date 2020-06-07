@@ -1,3 +1,9 @@
+v.1.1.2
+- changed logging back so nothing is logged unless debug logging is on
+
+v.1.1.1
+- restructured addon to match other development work
+
 v,1.1.0
 - Python 2/3 compatibility
 - updated common libraries

@@ -2,7 +2,7 @@
 # *
 # *  original Weather Station Lite Code by pkscout
 
-from kodi_six import xbmc, xbmcgui
+from kodi_six import xbmcgui
 import sys
 from resources.lib.wslsettings import loadSettings
 from resources.lib.xlogger import Logger
@@ -16,8 +16,8 @@ LW = Logger( preamble='[WS Lite]', logdebug=SETTINGS['debug'] )
 class Main:
 
     def __init__( self ):
-        LW.log( ['script version %s started' % SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
-        LW.log( ['debug logging set to %s' % SETTINGS['debug']], xbmc.LOGNOTICE )
+        LW.log( ['script version %s started' % SETTINGS['ADDONVERSION']] )
+        LW.log( ['debug logging set to %s' % SETTINGS['debug']] )
         self._init_vars()
         action, data = self._parse_argv()
         if action:
@@ -25,7 +25,7 @@ class Main:
                 self._set_properties( self.SENSORINTERFACE.getSensorData( data=data ) )
             else:
                 self._passback( action )
-        LW.log( ['script stopped'], xbmc.LOGNOTICE )
+        LW.log( ['script stopped'] )
 
 
     def _passback( self, action ):
