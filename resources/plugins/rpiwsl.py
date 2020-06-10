@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json, os, subprocess
+import json
 from kodi_six import xbmc
 from kodi_six.utils import py2_encode
 

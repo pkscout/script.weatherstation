@@ -1,6 +1,6 @@
 
 from kodi_six import xbmc, xbmcgui
-import json, sys
+import json
 from resources.lib.wslsettings import loadSettings
 from resources.lib.xlogger import Logger
 from resources.plugins import *
@@ -56,7 +56,7 @@ class Main( xbmc.Monitor ):
 
     def _scrub_settings( self ):
         scrubbed_settings = {}
-        for thekey, thevalue in self.SETTINGS.items(): 
+        for thekey, thevalue in self.SETTINGS.items():
             if 'ADDON' in thekey:
                 continue
             else:
