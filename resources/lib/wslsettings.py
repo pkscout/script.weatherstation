@@ -19,6 +19,8 @@ SETTINGSLIST = [ {'name':'auto_dim', 'default':True},
                  {'name':'timed_two_days', 'default':0},
                  {'name':'timed_two_action', 'default':11},
                  {'name':'sensor_interface', 'default':0},
+                 {'name':'which_camera', 'default':0},
+                 {'name':'which_sensor', 'default':0},
                  {'name':'debug', 'default':False}
                ]
 

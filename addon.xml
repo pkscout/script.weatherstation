@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.2.0" provider-name="pkscout">
+<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.3.0" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.26.0"/>
 		<import addon="script.module.kodi-six" version="0.0.3" />
@@ -7,9 +7,8 @@
 	<extension point="xbmc.service" library="service.py" />
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.1.2.0
-- changed process to a monitor
-- fixes for better communication with backend
+v.1.3.0
+- added settings to pick hardware sensors from Kodi
 		</news>
 		<assets>
         	<icon>icon.png</icon>

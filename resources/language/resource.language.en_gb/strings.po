@@ -45,43 +45,43 @@ msgid "Enable debug logging"
 msgstr ""
 
 msgctxt "#32252"
-msgid "Select sensor interface"
+msgid "Sensor interface"
 msgstr ""
 
 msgctxt "#32253"
-msgid "Auto Dim"
+msgid "Auto dim"
 msgstr ""
 
 msgctxt "#32254"
-msgid "Dark Threshold"
+msgid "Dark threshold"
 msgstr ""
 
 msgctxt "#32255"
-msgid "Bright Threshold"
+msgid "Bright threshold"
 msgstr ""
 
 msgctxt "#32256"
-msgid "Fixed Brightness"
+msgid "Fixed brightness"
 msgstr ""
 
 msgctxt "#32257"
-msgid "Dark Action"
+msgid "Dark action"
 msgstr ""
 
 msgctxt "#32258"
-msgid "Dim Action"
+msgid "Dim action"
 msgstr ""
 
 msgctxt "#32259"
-msgid "Bright Action"
+msgid "Bright action"
 msgstr ""
 
 msgctxt "#32260"
-msgid "Sunrise Action"
+msgid "Sunrise action"
 msgstr ""
 
 msgctxt "#32261"
-msgid "Sunset Action"
+msgid "Sunset action"
 msgstr ""
 
 msgctxt "#32262"
@@ -101,44 +101,53 @@ msgid "Time 4"
 msgstr ""
 
 msgctxt "#32266"
-msgid "Time 1 Action"
+msgid "Time 1 action"
 msgstr ""
 
 msgctxt "#32267"
-msgid "Time 2 Action"
+msgid "Time 2 action"
 msgstr ""
 
 msgctxt "#32268"
-msgid "Time 3 Action"
+msgid "Time 3 action"
 msgstr ""
 
 msgctxt "#32269"
-msgid "Time 4 Action"
+msgid "Time 4 action"
 msgstr ""
 
 msgctxt "#32270"
-msgid "Time 1 Days"
+msgid "Time 1 days"
 msgstr ""
 
 msgctxt "#32271"
-msgid "Time 2 Days"
+msgid "Time 2 days"
 msgstr ""
 
 msgctxt "#32272"
-msgid "Time 3 Days"
+msgid "Time 3 days"
 msgstr ""
 
 msgctxt "#32273"
-msgid "Time 4 Days"
+msgid "Time 4 days"
 msgstr ""
 
 msgctxt "#32274"
-msgid "Sunrise Days"
+msgid "Sunrise days"
 msgstr ""
 
 msgctxt "#32275"
-msgid "Sunset Days"
+msgid "Sunset days"
 msgstr ""
+
+msgctxt "#32276"
+msgid "Light sensor"
+msgstr ""
+
+msgctxt "#32277"
+msgid "Temperature/Humidity sensor"
+msgstr ""
+
 
 # Settings Lists
 
@@ -205,3 +214,22 @@ msgstr ""
 msgctxt "#32332"
 msgid "Weekends"
 msgstr ""
+
+msgctxt "#32340"
+msgid "BH1750 I2C"
+msgstr ""
+
+msgctxt "#32341"
+msgid "Pi Camera"
+msgstr ""
+
+msgctxt "#32350"
+msgid "BME280 I2C"
+msgstr ""
+
+msgctxt "#32351"
+msgid "SenseHAT"
+msgstr ""
+
+
+
