@@ -1,3 +1,7 @@
+v.1.2.0
+- changed process to a monitor
+- fixes for better communication with backend
+
 v.1.1.2
 - changed logging back so nothing is logged unless debug logging is on
 
