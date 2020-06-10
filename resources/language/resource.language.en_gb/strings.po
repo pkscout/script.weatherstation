@@ -16,17 +16,192 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#Dialog Text
+# Settings Headers
+
+msgctxt "#32200"
+msgid "Brightness"
+msgstr ""
 
 msgctxt "#32201"
-msgid "Enable debug logging"
+msgid "Timed Triggers"
 msgstr ""
 
 msgctxt "#32202"
-msgid "Select sensor interface"
+msgid "Advanced"
 msgstr ""
 
 msgctxt "#32203"
+msgid "Actions"
+msgstr ""
+
+msgctxt "#32204"
+msgid "Special Triggers"
+msgstr ""
+
+# Settings Options
+
+msgctxt "#32251"
+msgid "Enable debug logging"
+msgstr ""
+
+msgctxt "#32252"
+msgid "Select sensor interface"
+msgstr ""
+
+msgctxt "#32253"
+msgid "Auto Dim"
+msgstr ""
+
+msgctxt "#32254"
+msgid "Dark Threshold"
+msgstr ""
+
+msgctxt "#32255"
+msgid "Bright Threshold"
+msgstr ""
+
+msgctxt "#32256"
+msgid "Fixed Brightness"
+msgstr ""
+
+msgctxt "#32257"
+msgid "Dark Action"
+msgstr ""
+
+msgctxt "#32258"
+msgid "Dim Action"
+msgstr ""
+
+msgctxt "#32259"
+msgid "Bright Action"
+msgstr ""
+
+msgctxt "#32260"
+msgid "Sunrise Action"
+msgstr ""
+
+msgctxt "#32261"
+msgid "Sunset Action"
+msgstr ""
+
+msgctxt "#32262"
+msgid "Time 1"
+msgstr ""
+
+msgctxt "#32263"
+msgid "Time 2"
+msgstr ""
+
+msgctxt "#32264"
+msgid "Time 3"
+msgstr ""
+
+msgctxt "#32265"
+msgid "Time 4"
+msgstr ""
+
+msgctxt "#32266"
+msgid "Time 1 Action"
+msgstr ""
+
+msgctxt "#32267"
+msgid "Time 2 Action"
+msgstr ""
+
+msgctxt "#32268"
+msgid "Time 3 Action"
+msgstr ""
+
+msgctxt "#32269"
+msgid "Time 4 Action"
+msgstr ""
+
+msgctxt "#32270"
+msgid "Time 1 Days"
+msgstr ""
+
+msgctxt "#32271"
+msgid "Time 2 Days"
+msgstr ""
+
+msgctxt "#32272"
+msgid "Time 3 Days"
+msgstr ""
+
+msgctxt "#32273"
+msgid "Time 4 Days"
+msgstr ""
+
+msgctxt "#32274"
+msgid "Sunrise Days"
+msgstr ""
+
+msgctxt "#32275"
+msgid "Sunset Days"
+msgstr ""
+
+# Settings Lists
+
+msgctxt "#32300"
+msgid "Screen Off"
+msgstr ""
+
+msgctxt "#32301"
+msgid "Set Brightness to 10"
+msgstr ""
+
+msgctxt "#32302"
+msgid "Set Brightness to 20"
+msgstr ""
+
+msgctxt "#32303"
+msgid "Set Brightness to 30"
+msgstr ""
+
+msgctxt "#32304"
+msgid "Set Brightness to 40"
+msgstr ""
+
+msgctxt "#32305"
+msgid "Set Brightness to 50"
+msgstr ""
+
+msgctxt "#32306"
+msgid "Set Brightness to 60"
+msgstr ""
+
+msgctxt "#32307"
+msgid "Set Brightness to 70"
+msgstr ""
+
+msgctxt "#32308"
+msgid "Set Brightness to 80"
+msgstr ""
+
+msgctxt "#32309"
+msgid "Set Brightness to 90"
+msgstr ""
+
+msgctxt "#32310"
+msgid "Set Brightness to 100"
+msgstr ""
+
+msgctxt "#32311"
+msgid "None"
+msgstr ""
+
+msgctxt "#32320"
 msgid "RPI Weatherstation Lite"
 msgstr ""
 
+msgctxt "#32330"
+msgid "Every Day"
+msgstr ""
+
+msgctxt "#32331"
+msgid "Weekdays"
+msgstr ""
+
+msgctxt "#32332"
+msgid "Weekends"
+msgstr ""

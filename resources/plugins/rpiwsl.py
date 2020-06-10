@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json
+import json, os, subprocess
 from kodi_six import xbmc
 from kodi_six.utils import py2_encode
 
@@ -13,13 +13,14 @@ class SensorInterface:
         self.TEMPSCALE = py2_encode( xbmc.getInfoLabel('System.TemperatureUnits') )
 
 
-    def handlePassback( self, action ):
-        message = { "jsonrpc": "2.0",
-                    "method": "JSONRPC.NotifyAll",
-                    "params": {"sender": "Weatherstation", "message": "RPIWSL_VariablePass", "data": {"action":action}},
-                    "id": 1 }
+    def handlePassback( self, json_method, data ):
+        if not data:
+            data = {}
+        message = { 'jsonrpc': '2.0',
+                    'method': 'JSONRPC.NotifyAll',
+                    'params': {'sender': 'Kodi', 'message': json_method, 'data': data},
+                    'id': 1 }
         xbmc.executeJSONRPC( json.dumps( message ) )
-        return 'passed message via websockets to rpi.weatherstation.lite'
 
 
     def getSensorData( self, data=None ):

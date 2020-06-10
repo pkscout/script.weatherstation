@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-	<setting id="sensor_interface" type="enum" label="32202" default="0" lvalues="32303" />
-	<setting id="debug" type="bool" label="32201" default="false" />
+	<category label="32200">
+		<setting id="auto_dim" type="bool" label="32253" default="true" />
+		<setting id="fixed_brightness" type="slider" label="32256" default="100" range="10,100" option="int" visible="eq(-1,false)" />
+		<setting id="dark_threshold" type="slider" label="32254" default="5" range="0,50" option="int" visible="eq(-2,true)" />
+		<setting id="bright_threshold" type="slider" label="32255" default="80" range="50,100" option="int" visible="eq(-3,true)" />
+		<setting label="32203" type="lsep"/>
+		<setting id="dark_action" label="32257" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32211" default="0" visible="eq(-5,true)" />
+		<setting id="dim_action" label="32258" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32211" default="4" visible="eq(-6,true)" />
+		<setting id="bright_action" label="32259" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32211" default="10" visible="eq(-7,true)" />
+	</category>
+	<category label="32204">
+		<setting id="sunrise_action" label="32260" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
+		<setting id="sunrise_days" label="32274" type="select" lvalues="32330|32331|32332" default="0" />
+		<setting id="sunset_action" label="32261" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
+		<setting id="sunset_days" label="32275" type="select" lvalues="32330|32331|32332" default="0" />
+		</category>
+	<category label="32201">
+		<setting id="timed_one" label="32262" type="time" default="00:00" />
+		<setting id="timed_one_days" label="32270" type="select" lvalues="32330|32331|32332" default="0" />
+		<setting id="timed_one_action" label="32266" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
+		<setting id="timed_two" label="32263" type="time" default="00:00" />
+		<setting id="timed_two_days" label="32271" type="select" lvalues="32330|32331|32332" default="0" />
+		<setting id="timed_two_action" label="32267" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
+	</category>
+	<category label="Advanced">
+		<setting id="sensor_interface" type="enum" label="32252" default="0" lvalues="32320" />
+		<setting id="debug" type="bool" label="32251" default="false" />
+	</category>
 </settings>
