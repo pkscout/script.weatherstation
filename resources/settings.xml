@@ -2,29 +2,35 @@
 <settings>
 	<category label="32200">
 		<setting id="auto_dim" type="bool" label="32253" default="true" />
-		<setting id="fixed_brightness" type="slider" label="32256" default="100" range="10,100" option="int" visible="eq(-1,false)" />
-		<setting id="dark_threshold" type="slider" label="32254" default="5" range="0,50" option="int" visible="eq(-2,true)" />
-		<setting id="bright_threshold" type="slider" label="32255" default="80" range="50,100" option="int" visible="eq(-3,true)" />
-		<setting label="32203" type="lsep"/>
-		<setting id="dark_action" label="32257" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32211" default="0" visible="eq(-5,true)" />
-		<setting id="dim_action" label="32258" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32211" default="4" visible="eq(-6,true)" />
-		<setting id="bright_action" label="32259" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32211" default="10" visible="eq(-7,true)" />
+		<setting id="fixed_brightness" type="slider" label="32256" default="100" range="1,100" option="int" visible="eq(-1,false)" />
+		<setting id="dark_action" label="32257" type="select" lvalues="32300|32301|32302" default="1" visible="eq(-2,true)" />
+		<setting id="dark_level" type="slider" label="32256" default="10" range="1,100" option="int" visible="eq(-3,true) + eq(-1,2)" subsetting="true" />
+		<setting id="dim_action" label="32258" type="select" lvalues="32300|32301|32302" default="2" visible="eq(-4,true)" />
+		<setting id="dim_level" type="slider" label="32256" default="40" range="1,100" option="int" visible="eq(-5,true) + eq(-1,2)" subsetting="true"/>
+		<setting id="bright_action" label="32259" type="select" lvalues="32300|32301|32302" default="2" visible="eq(-6,true)" />
+		<setting id="bright_level" type="slider" label="32256" default="100" range="1,100" option="int" visible="eq(-7,true) + eq(-1,2)" subsetting="true"/>
 	</category>
 	<category label="32204">
-		<setting id="sunrise_action" label="32260" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
-		<setting id="sunrise_days" label="32274" type="select" lvalues="32330|32331|32332" default="0" />
-		<setting id="sunset_action" label="32261" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
-		<setting id="sunset_days" label="32275" type="select" lvalues="32330|32331|32332" default="0" />
+		<setting id="sunrise_action" label="32260" type="select" lvalues="32300|32301|32302" default="0" />
+		<setting id="sunrise_level" type="slider" label="32256" default="100" range="1,100" option="int" visible="eq(-1,2)" subsetting="true" />
+		<setting id="sunrise_days" label="32274" type="select" lvalues="32330|32331|32332" default="0" visible="!eq(-2,0)" subsetting="true" />
+		<setting id="sunset_action" label="32261" type="select" lvalues="32300|32301|32302" default="0" />
+		<setting id="sunset_level" type="slider" label="32256" default="50" range="1,100" option="int" visible="eq(-1,2)" subsetting="true"/>
+		<setting id="sunset_days" label="32275" type="select" lvalues="32330|32331|32332" default="0" visible="!eq(-2,0)" subsetting="true"/>
 		</category>
 	<category label="32201">
-		<setting id="timed_one" label="32262" type="time" default="00:00" />
-		<setting id="timed_one_days" label="32270" type="select" lvalues="32330|32331|32332" default="0" />
-		<setting id="timed_one_action" label="32266" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
-		<setting id="timed_two" label="32263" type="time" default="00:00" />
-		<setting id="timed_two_days" label="32271" type="select" lvalues="32330|32331|32332" default="0" />
-		<setting id="timed_two_action" label="32267" type="select" lvalues="32300|32301|32302|32303|32304|32305|32306|32307|32308|32309|32310|32311" default="11" />
+		<setting id="timer_one_action" label="32266" type="select" lvalues="32300|32301|32302" default="0" />
+		<setting id="timer_one_level" type="slider" label="32256" default="100" range="1,100" option="int" visible="eq(-1,2)" subsetting="true" />
+		<setting id="timer_one_time" label="32262" type="time" default="00:00"  visible="!eq(-2,0)" subsetting="true" />
+		<setting id="timer_one_days" label="32270" type="select" lvalues="32330|32331|32332" default="0" visible="!eq(-3,0)" subsetting="true" />
+		<setting id="timer_two_action" label="32267" type="select" lvalues="32300|32301|32302" default="0" />
+		<setting id="timer_two_level" type="slider" label="32256" default="100" range="1,100" option="int" visible="eq(-1,2)" subsetting="true" />
+		<setting id="timer_two_time" label="32263" type="time" default="00:00" visible="!eq(-2,0)" subsetting="true" />
+		<setting id="timer_two_days" label="32271" type="select" lvalues="32330|32331|32332" default="0" visible="!eq(-3,0)" subsetting="true" />
 	</category>
 	<category label="Advanced">
+		<setting id="dark_threshold" type="slider" label="32254" default="5" range="0,50" option="int" />
+		<setting id="bright_threshold" type="slider" label="32255" default="80" range="50,100" option="int" />
 		<setting id="sensor_interface" type="select" label="32252" default="0" lvalues="32320" />
 		<setting id="which_camera" type="select" label="32276" default="0" lvalues="32340|32341" />
 		<setting id="which_sensor" type="select" label="32277" default="0" lvalues="32350|32351" />

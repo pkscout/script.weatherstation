@@ -61,7 +61,7 @@ msgid "Bright threshold"
 msgstr ""
 
 msgctxt "#32256"
-msgid "Fixed brightness"
+msgid "Screen light level"
 msgstr ""
 
 msgctxt "#32257"
@@ -85,51 +85,27 @@ msgid "Sunset action"
 msgstr ""
 
 msgctxt "#32262"
-msgid "Time 1"
+msgid "Timer 1 time"
 msgstr ""
 
 msgctxt "#32263"
-msgid "Time 2"
-msgstr ""
-
-msgctxt "#32264"
-msgid "Time 3"
-msgstr ""
-
-msgctxt "#32265"
-msgid "Time 4"
+msgid "Timer 2 time"
 msgstr ""
 
 msgctxt "#32266"
-msgid "Time 1 action"
+msgid "Timer 1 action"
 msgstr ""
 
 msgctxt "#32267"
-msgid "Time 2 action"
-msgstr ""
-
-msgctxt "#32268"
-msgid "Time 3 action"
-msgstr ""
-
-msgctxt "#32269"
-msgid "Time 4 action"
+msgid "Timer 2 action"
 msgstr ""
 
 msgctxt "#32270"
-msgid "Time 1 days"
+msgid "Timer 1 days"
 msgstr ""
 
 msgctxt "#32271"
-msgid "Time 2 days"
-msgstr ""
-
-msgctxt "#32272"
-msgid "Time 3 days"
-msgstr ""
-
-msgctxt "#32273"
-msgid "Time 4 days"
+msgid "Timer 2 days"
 msgstr ""
 
 msgctxt "#32274"
@@ -152,51 +128,15 @@ msgstr ""
 # Settings Lists
 
 msgctxt "#32300"
-msgid "Screen Off"
+msgid "None"
 msgstr ""
 
 msgctxt "#32301"
-msgid "Set Brightness to 10"
+msgid "Screen Off"
 msgstr ""
 
 msgctxt "#32302"
-msgid "Set Brightness to 20"
-msgstr ""
-
-msgctxt "#32303"
-msgid "Set Brightness to 30"
-msgstr ""
-
-msgctxt "#32304"
-msgid "Set Brightness to 40"
-msgstr ""
-
-msgctxt "#32305"
-msgid "Set Brightness to 50"
-msgstr ""
-
-msgctxt "#32306"
-msgid "Set Brightness to 60"
-msgstr ""
-
-msgctxt "#32307"
-msgid "Set Brightness to 70"
-msgstr ""
-
-msgctxt "#32308"
-msgid "Set Brightness to 80"
-msgstr ""
-
-msgctxt "#32309"
-msgid "Set Brightness to 90"
-msgstr ""
-
-msgctxt "#32310"
-msgid "Set Brightness to 100"
-msgstr ""
-
-msgctxt "#32311"
-msgid "None"
+msgid "Screen On"
 msgstr ""
 
 msgctxt "#32320"
