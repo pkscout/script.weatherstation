@@ -98,3 +98,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+resources/.DS_Store
+resources/lib/.DS_Store
