@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.4.0" provider-name="pkscout">
+<addon id="script.weatherstation.lite" name="Weather Station Lite" version="1.4.100" provider-name="pkscout">
 	<requires>
-		<import addon="xbmc.python" version="2.26.0"/>
+		<import addon="xbmc.python" version="3.0.0"/>
 		<import addon="script.module.kodi-six" version="0.0.3" />
 	</requires>
 	<extension point="xbmc.service" library="service.py" />
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.1.4.0
+v.1.4.100
 - made light level for actions more granular
 		</news>
 		<assets>
