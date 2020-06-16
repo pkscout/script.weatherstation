@@ -73,5 +73,5 @@ class Main( xbmc.Monitor ):
         try:
           self.WINDOW.setProperty( property_name, value )
           self.LW.log( ['%s set to %s' % (property_name, value)] )
-        except Exception, e:
+        except Exception as e:
           self.LW.log( ['Exception: Could not set property %s to value %s' % (property_name, value), e] )
